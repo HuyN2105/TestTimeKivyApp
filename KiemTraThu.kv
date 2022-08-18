@@ -1,0 +1,269 @@
+HuyNguyeen:
+
+<HuyNguyeen>:
+# Main menu
+	canvas.before:
+		Color:
+			rgba: 0.14, .14, .14, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size
+    ScrollView:
+        GridLayout:
+            cols: 1
+            size_hint:1, None
+            height: "200dp"
+            padding: ("28dp", "10dp", "28dp", "0dp")
+            spacing: 20, 20
+            BoxLayout:
+                orientation: "vertical"
+                padding: ("28dp", "28dp", "28dp", "28dp")
+                
+                canvas.before:
+                    Color:
+                        rgba: (1,1,1, 1)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [15]
+                    Color:
+                        rgba: (0.14, .14, .14, 1)
+                    RoundedRectangle:
+                        size: self.width-10, self.height-10
+                        pos: self.x+5, self.y+5
+                GridLayout:
+                    cols: 3
+                    size_hint:1, None
+                    height: "22dp"
+                    spacing: 20, 20
+                    TextInput:
+                        id: subject
+                        size_hint: None, None
+                        width: "300dp"
+                        height: "30dp"
+                        hint_text: "Môn kiểm tra thử"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        multiline: False
+                        disabled: root.applied
+                    Button:
+                        text: "Đặt"
+                        size_hint: None, None
+                        width: "100dp"
+                        height: "30dp"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        disabled: root.applied
+                        on_press: root.apply()
+                    Button:
+                        text: "Đổi"
+                        size_hint: None, None
+                        width: "100dp"
+                        height: "30dp"
+                        pos_hint: {"center_x": .5, "center_y": .5}
+                        on_press: root.change()
+
+            Label:
+                id: subjectName
+                text: 'Môn kiêm tra thử'
+                size_hint: 1, None
+                height: "20dp"
+                font_size: 40
+                disabled: False
+            GridLayout:
+                cols: 1
+                GridLayout:
+                    cols: 2
+                    size_hint:1, None
+                    height: self.minimum_height
+                    padding: ("28dp", "28dp", "28dp", "28dp")
+                    spacing: 10, 10
+                    Button:
+                        text: "+"
+                        size_hint: None, None
+                        width: 300
+                        height: "100dp"
+                        on_press: root.addTimeA()
+                        border: (2, 2, 2, 2)
+                        disabled: root.buttonStatus
+                    GridLayout:
+                        rows: 2
+                        cols: 1
+                        Label:
+                            text: "Trắc nghiệm"
+                            size_hint: 1, None
+                            height: "20dp"
+                            font_size: 20
+                        Label:
+                            id: timeA
+                            text: "00:00,[size=40]00[/size]"
+                            font_size: 60
+                            markup: True
+                            size_hint: None, None
+                            width: 300
+                            height: "100dp"
+                            pos_hint: {"center_x": .5}
+                GridLayout:
+                    cols: 2
+                    size_hint:1, None
+                    height: self.minimum_height
+                    padding: ("28dp", "28dp", "28dp", "28dp")
+                    spacing: 10, 10
+                    Button:
+                        text: "+"
+                        size_hint: None, None
+                        width: 300
+                        height: "100dp"
+                        on_press: root.addTimeB()
+                        border: (2, 2, 2, 2)
+                        disabled: root.buttonStatus
+                    GridLayout:
+                        rows: 2
+                        cols: 1
+                        Label:
+                            text: "Tự luận"
+                            size_hint: 1, None
+                            height: "20dp"
+                            font_size: 20
+                        Label:
+                            id: timeB
+                            text: "00:00,[size=40]00[/size]"
+                            font_size: 60
+                            markup: True
+                            size_hint: None, None
+                            width: 300
+                            height: "100dp"
+                            pos_hint: {"center_x": .5}
+                GridLayout:
+                    cols: 2
+                    size_hint:1, None
+                    height: self.minimum_height
+                    padding: ("28dp", "28dp", "28dp", "28dp")
+                    spacing: 10, 10
+                    Button:
+                        text: "+"
+                        size_hint: None, None
+                        width: 300
+                        height: "100dp"
+                        on_press: root.addTimeC()
+                        border: (2, 2, 2, 2)
+                        disabled: root.buttonStatus
+                    GridLayout:
+                        rows: 2
+                        cols: 1
+                        Label:
+                            text: "Dò lại"
+                            size_hint: 1, None
+                            height: "20dp"
+                            font_size: 20
+                        Label:
+                            id: timeC
+                            text: "00:00,[size=40]00[/size]"
+                            font_size: 60
+                            markup: True
+                            size_hint: None, None
+                            width: 300
+                            height: "100dp"
+                            pos_hint: {"center_x": .5}
+                GridLayout:
+                    cols: 2
+                    size_hint: None, None
+                    width: "200dp"
+                    height: "30dp"
+                    padding: ("28dp", "0dp", "28dp", "28dp")
+                    spacing: 20, 20
+                    Button:
+                        text: "Đặt lại"
+                        size_hint: None, None
+                        width: "100dp"
+                        height: "30dp"
+                        on_press: root.resetAll()
+                        disabled: root.buttonStatus
+                    GridLayout:
+                        cols: 2
+                        padding: ("110dp", "0dp", "28dp", "28dp")
+                        spacing: 20, 20
+                        Label:
+                            text: "Tổng thời gian: "
+                            size_hint: None, None
+                            width: "100dp"
+                            height: "30dp"
+                            font_size: 20
+                        Label:
+                            id: totalTime
+                            text: "00:00,[size=14]00[/size]"
+                            font_size: 20
+                            markup: True
+                            size_hint: None, None
+                            width: "100dp"
+                            height: "30dp"
+                            pos_hint: {"center_x": .5}
+                    
+
+
+
+    # Stopwatch
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "horizontal"
+        size_hint: 1, None
+        height: self.minimum_height
+        padding: ("28dp", "28dp", "28dp", "28dp")
+        GridLayout:
+            cols: 2
+            size_hint:1, None
+            height: self.minimum_height
+            padding: ("28dp", "28dp", "28dp", "28dp")
+            spacing: 10, 10
+            Button:
+                id: startStop
+                text: 'Bắt đầu'
+                on_press: root.startStop()
+                size_hint: None, None
+                size: 125, 50
+                #background_color: (.2, .8, .2, 1)
+                bold: True
+                background_normal: 'colors/green.jpg'
+                background_down: 'colors/red.jpg'
+                border: (2, 2, 2, 2)
+                disabled: root.buttonStatus
+            Button:
+                id: reset
+                text: "Đặt lại"
+                size_hint: None, None
+                size: 125, 50
+                bold: True
+                background_color: (.62, .02, .03, 1)
+                border: (2, 2, 2, 2)
+                on_press: root.reset()
+                disabled: root.buttonStatus
+        Label:
+            id: stopWatch
+            text: '00:00,[size=40]00[/size]'
+            font_size: 60
+            markup: True
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        orientation: "horizontal"
+        size_hint: 1, None
+        height: "20dp"
+        padding: ("28dp", "0dp", "0dp", "28dp")
+        Label:
+            text: "App developer: HuyNguyeen || Full name: Nguyễn Thanh Huy || Class : 10B7"
+            font_size: 15
+            markup: True
+
+
+
+## This program is created by HuyNguyeen
+## Facebook: https://www.facebook.com/huynguyeen.2105
+## Do not copy without permission
+## Thank you for using this program
