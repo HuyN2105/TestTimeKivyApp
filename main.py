@@ -179,6 +179,6 @@ KiemTraThu().run()
 
 
 ## This program is created by HuyNguyeen
-## Facebook: https://www.facebook.com/huynguyeen.2105
+## Facebook: facebook.com/HuyN.2105/
 ## Do not copy without permission
 ## Thank you for using this program
